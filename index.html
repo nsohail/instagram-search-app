@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Instagram Searcher</title>
+
+      <script data-require="angular.js@1.3.10" data-semver="1.3.10" src="https://code.angularjs.org/1.3.10/angular.js"></script>
+      <script type="text/javascript" src="https://code.angularjs.org/1.2.18/angular-animate.min.js"></script>
+
+
+      <link href='http://fonts.googleapis.com/css?family=Cabin+Sketch:400,700' rel='stylesheet' type='text/css'>
+
+      <link href="style.css" rel="stylesheet" type="style/css">
+      <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+
+      <script src="app.js"></script>
+
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+	<div class="header">
+		<img src="images/ng-instagram.png">
+	</div>
+	
+	<form name="myForm" class="myForm" ng-submit="searchPics(tagQuery)">
+		<div>
+			<input type="text" id="search" ng-model="tagQuery" placeholder="Enter a tag to search" required>
+			<input type="submit" id="submit" value="Submit"/>
+		</div>
+	</form>
+
+	<div class="status" ng-if="searching">Searching Instagram for photos tagged with "{{tagSearched}}"</div>
+
+	<div class="status good" ng-if="results">We found {{numItems}} results for "{{tagSearched}}"</div>
+
+	<div class="status bad" ng-if="resultsNone">Something went wrong</div>
+
+	<ul>
+		<li ng-repeat="item in searchedItems">
+			<a href="{{item.link}}" target="_blank"><img ng-src="{{item.images.thumbnail.url}}"></a>
+		</li>
+	</ul>
+</body>
+
+</html>
