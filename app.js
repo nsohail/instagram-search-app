@@ -1,4 +1,4 @@
-angular.module('myApp',[])
+angular.module('myApp',['ngAnimate'])
 	.controller('myCtrl',function($scope,$http){
 		$scope.searching = false;
 		$scope.searchPics = function(tagQuery){
