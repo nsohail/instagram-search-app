@@ -7,6 +7,7 @@ angular.module('myApp',[])
 			$scope.searching = true;
 			$scope.results = false;
 			$scope.resultsNone = false;
+			$scope.badResult = false;
 
 			setTimeout(function(){
 				$scope.searching = false;
@@ -25,14 +26,19 @@ angular.module('myApp',[])
 					})
 					.success(function(response){
 						//console.log("success");
+						if(response.data) {
+							$scope.results = true;
+							$scope.searchedItems = response.data;
+							$scope.numItems = response.data.length;
+						} else {
+							$scope.badResult = true;
+						}
+
 						$scope.tagQuery = '';
 						$scope.myForm.$setPristine();
 						$scope.myForm.$setUntouched();
-						$scope.results = true;
-
-						$scope.searchedItems = response.data;
-						$scope.numItems = response.data.length;
-						console.log($scope.searchedItems);
+						
+						
 					})
 					.error(function(error){
 						console.log(error);

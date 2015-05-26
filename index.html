@@ -8,8 +8,6 @@
       <script type="text/javascript" src="https://code.angularjs.org/1.2.18/angular-animate.min.js"></script>
 
 
-      <link href='http://fonts.googleapis.com/css?family=Cabin+Sketch:400,700' rel='stylesheet' type='text/css'>
-
       <link href="style.css" rel="stylesheet" type="style/css">
       <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
@@ -35,10 +33,11 @@
 	<div class="status good" ng-if="results">We found {{numItems}} results for "{{tagSearched}}"</div>
 
 	<div class="status bad" ng-if="resultsNone">Something went wrong</div>
+	<div class="status bad" ng-if="badResult">No results for "{{tagSearched}}"</div>
 
 	<ul>
-		<li ng-repeat="item in searchedItems">
-			<a href="{{item.link}}" target="_blank"><img ng-src="{{item.images.thumbnail.url}}"></a>
+		<li class="items repeat-anim" ng-repeat="item in searchedItems">
+			<a href="{{item.link}}" target="_blank"><img ng-src="{{item.images.low_resolution.url}}"></a>
 		</li>
 	</ul>
 </body>
